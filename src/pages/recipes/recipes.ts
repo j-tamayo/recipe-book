@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { EditRecipePage } from '../edit-recipe/edit-recipe';
+import { RecipePage } from '../recipe/recipe';
 
 import { RecipesService } from '../../services/recipes';
 import { Recipe } from '../../models/recipe';
@@ -29,8 +30,8 @@ export class RecipesPage implements OnInit {
     this.loadItems();
   }
 
-  onLoadRecipe() {
-
+  onLoadRecipe(recipe: Recipe, index: number) {
+    this.navCtrl.push(RecipePage, {recipe: recipe, index: index});
   }
 
   loadItems() {
