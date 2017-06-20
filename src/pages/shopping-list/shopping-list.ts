@@ -60,7 +60,8 @@ export class ShoppingListPage {
     popover.present({ev: event});
 
     popover.onDidDismiss(data => {
-      if (data.action == 'load') {
+      
+      if (data && data.action == 'load') {
         loading.present();
 
         this.authService.getActiveUser().getToken()
@@ -77,12 +78,12 @@ export class ShoppingListPage {
               },
               error => {
                 loading.dismiss();
-                this.handleError(error.message);
+                this.handleError(error.json().error);
               }
             );
           });
 
-      } else if (data.action == 'store') {
+      } else if (data && data.action == 'store') {
         loading.present();
 
         this.authService.getActiveUser().getToken()
@@ -92,7 +93,7 @@ export class ShoppingListPage {
               () => loading.dismiss(),
               error => {
                 loading.dismiss();
-                this.handleError(error.message);
+                this.handleError(error.json().error);
               }
             );
           });
