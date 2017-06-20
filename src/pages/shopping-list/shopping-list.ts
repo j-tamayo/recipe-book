@@ -9,7 +9,7 @@ import {
 } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
-import { SLOptionsPage } from './sl-options/sl-options';
+import { DatabaseOptionsPage } from '../database-options/database-options';
 
 import { ShoppingListService } from '../../services/shopping-list';
 import { AuthService } from '../../services/auth';
@@ -55,12 +55,12 @@ export class ShoppingListPage {
     const loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-    const popover = this.popoverCtrl.create(SLOptionsPage);
+    const popover = this.popoverCtrl.create(DatabaseOptionsPage);
 
     popover.present({ev: event});
 
     popover.onDidDismiss(data => {
-      
+
       if (data && data.action == 'load') {
         loading.present();
 
