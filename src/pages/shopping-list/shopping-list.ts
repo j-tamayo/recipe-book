@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { SLOptionsPage } from './sl-options/sl-options';
 
 import { ShoppingListService } from '../../services/shopping-list';
+import { AuthService } from '../../services/auth';
 
 import { Ingredient } from '../../models/ingredient';
 
@@ -20,7 +21,8 @@ export class ShoppingListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private slService: ShoppingListService,
-    private popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController,
+    private authService: AuthService
   ) {
 
   }
@@ -43,6 +45,22 @@ export class ShoppingListPage {
   onShowOptions(event: MouseEvent) {
     const popover = this.popoverCtrl.create(SLOptionsPage);
     popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data.action == 'load') {
+
+      } else {
+        this.authService.getActiveUser().getToken()
+          .then((token: string) => {
+            this.slService.storeList(token)
+            .subscribe(
+              () => console.log('Success'),
+              error => {
+                console.log(error);
+              }
+            );
+          });
+      }
+    })
   }
 
   private loadItems() {
