@@ -8,13 +8,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 
+import { AuthService } from '../services/auth';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  tabsPage = TabsPage;
+  rootPage: any = TabsPage;
   signinPage = SigninPage;
   signupPage = SignupPage;
+  isAuthenticated = false;
 
   @ViewChild('nav') nav: NavController;
 
@@ -22,12 +25,23 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private authService: AuthService
   ) {
-    
+
     firebase.initializeApp({
       apiKey: "AIzaSyDf6bTIVswXqrhkoy1A97DmIwTXQ7yAtvk",
       authDomain: "ionici2-recipebook.firebaseapp.com",
+    });
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isAuthenticated = true;
+        this.rootPage = TabsPage;
+      } else {
+        this.isAuthenticated = false;
+        this.rootPage = SigninPage;
+      }
     });
 
     platform.ready().then(() => {
@@ -44,6 +58,8 @@ export class MyApp {
   }
 
   onLogout() {
-
+    this.authService.logout();
+    this.menuCtrl.close();
+    this.nav.setRoot(SigninPage);
   }
 }
