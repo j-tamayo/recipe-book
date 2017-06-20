@@ -12,6 +12,7 @@ import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
+import { SLOptionsPage } from '../pages/shopping-list/sl-options/sl-options';
 
 import { ShoppingListService } from '../services/shopping-list';
 import { RecipesService } from '../services/recipes';
@@ -26,7 +27,8 @@ import { AuthService } from '../services/auth';
     ShoppingListPage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SLOptionsPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { AuthService } from '../services/auth';
     ShoppingListPage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SLOptionsPage
   ],
   providers: [
     StatusBar,
