@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  IonicPage,
   NavController,
   NavParams,
   ActionSheetController,
@@ -13,7 +12,6 @@ import { Recipe } from '../../models/recipe';
 
 import { RecipesService } from '../../services/recipes';
 
-@IonicPage()
 @Component({
   selector: 'page-edit-recipe',
   templateUrl: 'edit-recipe.html',

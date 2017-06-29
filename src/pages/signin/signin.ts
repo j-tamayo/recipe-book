@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../../services/auth';
 
-@IonicPage()
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html',
@@ -33,7 +32,7 @@ export class SigninPage {
       })
       .catch(error => {
         loading.dismiss();
-        
+
         const alert = this.alertCtrl.create({
           title: 'Signin failed!',
           message: error.message,

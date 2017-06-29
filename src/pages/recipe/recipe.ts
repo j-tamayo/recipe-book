@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { EditRecipePage } from '../edit-recipe/edit-recipe';
 
@@ -8,7 +8,6 @@ import { Recipe } from '../../models/recipe';
 import { ShoppingListService } from '../../services/shopping-list';
 import { RecipesService } from '../../services/recipes';
 
-@IonicPage()
 @Component({
   selector: 'page-recipe',
   templateUrl: 'recipe.html',

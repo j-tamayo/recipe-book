@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  IonicPage,
   NavController,
   NavParams,
   PopoverController,
@@ -16,7 +15,6 @@ import { RecipesService } from '../../services/recipes';
 import { AuthService } from '../../services/auth';
 import { Recipe } from '../../models/recipe';
 
-@IonicPage()
 @Component({
   selector: 'page-recipes',
   templateUrl: 'recipes.html',

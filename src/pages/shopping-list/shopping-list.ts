@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {
-  IonicPage,
   NavController,
   NavParams,
   PopoverController,
@@ -16,7 +15,6 @@ import { AuthService } from '../../services/auth';
 
 import { Ingredient } from '../../models/ingredient';
 
-@IonicPage()
 @Component({
   selector: 'page-shopping-list',
   templateUrl: 'shopping-list.html',
